@@ -1,7 +1,7 @@
 CREATE TABLE exercito (
 	ID INT PRIMARY KEY AUTO_INCREMENT,
     qtd_soldados INT,
-    fk_Planeta INT, FOREIGN KEY (fk_planeta) REFERENCES planetas(ID)
+    fk_Planetas INT, FOREIGN KEY (fk_Planetas) REFERENCES planetas(ID)
 );
 
 INSERT INTO exercito VALUES

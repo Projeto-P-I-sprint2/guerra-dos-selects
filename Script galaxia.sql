@@ -220,7 +220,7 @@ LEFT JOIN populacao ON racas.ID = populacao.FK_racas WHERE qtd_populacao IS NULL
 
 -- CHALLENGE --
 -- Mostre a nave mais pesada de cada planeta agrupada da mais até a menos pesada --
-SELECT planetas.nome AS planeta, naves.nome AS nave, max(naves.peso) AS velocidade FROM hangar
+SELECT planetas.nome AS planeta, naves.nome AS nave, max(naves.peso) AS peso FROM hangar
 JOIN naves ON naves.idnave = hangar.fknave
 JOIN exercito ON exercito.ID = hangar.fkexercito
 JOIN planetas ON planetas.ID = exercito.fk_Planetas GROUP BY(planetas.nome) ORDER BY naves.peso DESC;

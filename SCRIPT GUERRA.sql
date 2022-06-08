@@ -1,7 +1,7 @@
 CREATE DATABASE galaxia;
 USE galaxia;
 
-CREATE TABLE sistemas_solares(
+CREATE TABLE sistemas_planetarios(
 ID INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR (45)
 );
@@ -11,7 +11,7 @@ ID INT AUTO_INCREMENT,
 nome VARCHAR (45),
 temperatura DECIMAL (8,2),
 FK_sistema INT,
-FOREIGN KEY (FK_sistema) REFERENCES sistemas_solares(ID),
+FOREIGN KEY (FK_sistema) REFERENCES sistemas_planetarios(ID),
 PRIMARY KEY(ID, FK_sistema)
 );
 
@@ -36,22 +36,31 @@ FOREIGN KEY (FK_planeta) REFERENCES planetas(ID),
 PRIMARY KEY(ID, FK_planeta)
 );
 
-create table armas(idarma int primary key auto_increment,
-municao varchar (45),
-nome varchar(45),
-tipo varchar(45),
-atributo varchar(45),
-tier varchar(10),
-check(tier = 'raro' or tier = 'épico' or tier = 'lendário' or tier = 'mistíco' or tier = 'moonlight'),
-dano int);
+INSERT INTO sistemas_planetarios
+VALUES
+(NULL, 'Nexus'),
+(NULL, 'Gliese 667 C');
 
-insert into armas (municao, nome, tipo, atributo, tier,dano)
-value (null,'wing drive weapon','la geas','destrói raças','moonlight',2000000),
-(null,'eclipse','espada','causa sangramento','raro',40),
-('magia','Primordial Jade Moon Blade','foice','suga vidas','lendário',100.000),
-('almas','grandark','arma demoniaca','suga vidas','místico',null),
-('poder demoniaco','crescente','espada divina','suga vidas','lendário',null),
-('balas','M416 CQB','Fuzil de Assalto','arma humana','raro',200),
-('balas','MK-16 SCAR-L','Rifles','arma humana','raro',150),
-('ogiva','RPG-7','lançador de granadas','arma humana','raro',1000),
-(null,'Antumbra, sombra dos cosmos','adagas','ficar invisível','épico',5000);
+INSERT INTO sol
+VALUES
+(NULL, 'Vargos 265', 2562.50, 1),
+(NULL, 'Mercuros 69', 6549.50, 2);
+
+INSERT INTO planetas
+VALUES
+(NULL, 'Krypton', 'Branco', 1525478921.25, 2, NULL),
+(NULL, 'Rarculo-92', 'Vermelho', 25416.00, 1, NULL),
+(NULL, 'Charmila-30', 'Verde', 2598712.92, 1, 2),
+(NULL, 'Nirmilan', 'Dourado', 256987.32, 2, 1),
+(NULL, 'Mordokun', 'Azul', 12364475.00, 2, NULL);
+
+INSERT INTO satelites
+VALUES
+(NULL, 'Kwanza-98', 2365.20, 1),
+(NULL, 'Girgon-12', 1254.20, 2),
+(NULL, 'Burgagon-30', 15876.29, 1),
+(NULL, 'Wargin', 1236.00, 3),
+(NULL, 'Quadcaar', 3265.75, 4),
+(NULL, 'zargzon-30', 658.60, 5),
+(NULL, 'Churza-70', 4236.00, 5),
+(NULL, 'Kirki-9', 2365.20, 1);

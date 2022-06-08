@@ -1,0 +1,11 @@
+CREATE TABLE exercito (
+	ID INT PRIMARY KEY AUTO_INCREMENT,
+    qtd_soldados INT,
+    fk_Planeta INT, FOREIGN KEY (fk_planeta) REFERENCES planetas(ID)
+);
+
+INSERT INTO exercito VALUES
+( NULL, 10000, 1 ),
+( NULL, 20000, 2 ),
+( NULL, 20000, 3 ),
+( NULL, 20000, 4 );

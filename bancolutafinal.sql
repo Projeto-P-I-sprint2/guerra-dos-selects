@@ -249,3 +249,66 @@ armas join exercito on idarma = ID;
 select armamento.FK_exercito, armas.atributo from armamento join armas on FK_exercito = idarma;
 -- eu quero uma tabela que cada arma mostre seu tier -- 
 select armamento.FK_arma, armas.tier from armamento join armas on Fk_arma = idarma;
+-- media --
+-- Mostre o nome das armas e a sua quantidade
+SELECT armas.nome, qtd_armas FROM armamento
+	INNER JOIN armas on armas.idarma = armamento.fk_arma;
+-- Mostre quantos planetas rodeiam determinado sol
+select COUNT(planetas.id) as 'Quantidade de planetas' from planetas
+	INNER JOIN sol ON sol.id = planetas.fk_sol
+		WHERE sol.nome = "Mercuros 69";
+        
+        -- challenge --
+        -- Mostrar o nome do sistema solar, e o nome das raças que vivem nesse sistema em que o sol possui a temperatura mais baixa.
+SELECT sistema.nome as 'Nome do sistema solar', ra.nomeRaca as 'Nome da raça em que lá habita' FROM sistemas_planetarios as sistema
+	INNER JOIN sol as s ON sistema.id = s.fk_sistema
+		INNER JOIN planetas as pla ON s.id = pla.fk_sol
+			INNER JOIN populacao as pop ON pla.id = pop.fk_planetas
+				INNER JOIN racas as ra ON ra.id = pop.fk_racas
+					WHERE s.temperatura < (select MAX(temperatura) from sol);
+                    
+                    -- dificil --
+                    Select nomeRaca from planetas
+Right join planetas as aliados on planetas.id = aliados.aliado
+Inner join populacao on populacao.id = fk_planetas
+Inner join racas.id = fk_racas
+Where aliados.aliado is null
+Group by nomeRaca;
+-- dificil --
+-- Mostrar o nome do sol e o nome dos planetas em que o sol possui a temperatura mais alta.
+SELECT sol.nome, planetas.nome FROM planetas
+	INNER JOIN sol ON sol.id = planetas.fk_sol
+		WHERE sol.temperatura = (select MAX(temperatura) from sol);
+-- facil --
+-- Mostre os exércitos em ordem de quantidade de soldados, maior para o menor
+SELECT * FROM exercito ORDER BY qtd_soldados DESC;
+SELECT * FROM exercito ORDER BY qtd_soldados DESC;
+ -- Mostre a raça que tem orelhas pontudas
+SELECT * FROM racas WHERE caracteristicas= 'Orelhas pontudas';
+-- Mostre a raça que tem orelhas pontudas
+SELECT * FROM racas WHERE caracteristicas= 'Orelhas pontudas';
+
+-- dificil --
+-- Mostrar o nome do sistema solar, e o nome das raças que vivem nesse sistema
+SELECT sistema.nome as 'Nome do sistema solar', ra.nomeRaca as 'Nome da raça em que lá habita' FROM sistemas_planetarios as sistema
+	INNER JOIN sol as s ON sistema.id = s.fk_sistema
+		INNER JOIN planetas as pla ON s.id = pla.fk_sol
+			INNER JOIN populacao as pop ON pla.id = pop.fk_planetas
+				INNER JOIN racas as ra ON ra.id = pop.fk_racas;
+                
+			-- medio --
+            Select nome,tamanho,qtd_populacao,caracteristicas,nomeRaca,altura_media from planetas
+Inner join populacao on planetas.id = fk_planetas
+Inner join racas on racas.id = fk_racas;
+
+-- facil --
+-- Mostre as racas que o seu nome termina com a letra s
+SELECT * FROM raca WHERE nome LIKE '%s'
+
+-- Mostre o nome das naves em ordem do maior para o menor -- 
+select nome from Naves
+	ORDER BY idNave Desc;
+    
+
+
+                    
